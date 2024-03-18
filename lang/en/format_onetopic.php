@@ -35,7 +35,8 @@ $string['hidetabsbar_help'] = 'Hide tabs bar in the course page. The navigation 
 
 $string['movesectionto'] = 'Move current topic';
 $string['movesectionto_help'] = 'Move current topic to left/right of selected topic';
-
+$string['splittabcontent'] = 'Split tab text up to the colon';
+$string['splittabcontent_help'] = 'Turn on to keep the text right up until the colon, given it exists on the tab text.';
 $string['utilities'] = 'Tabs edition utilities';
 $string['disableajax'] = 'Asynchronous edit actions';
 $string['disable'] = 'Disable';

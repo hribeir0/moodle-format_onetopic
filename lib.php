@@ -524,6 +524,10 @@ class format_onetopic extends core_courseformat\base {
                     'default' => 2,
                     'type' => PARAM_INT,
                 ],
+                'splittitle' => [
+                    'default' => 1,
+                    'type' => PARAM_INT,
+                ],
             ];
         }
 
@@ -634,6 +638,18 @@ class format_onetopic extends core_courseformat\base {
                         ],
                     ],
                 ],
+                'splittitle' => [
+                    'label' => get_string('splittabcontent', 'format_onetopic'),
+                    'help' => 'splittabcontent',
+                    'help_component' => 'format_onetopic',
+                    'element_type' => 'select',
+                    'element_attributes' => [
+                        [
+                            0 => new lang_string('no'),
+                            1 => new lang_string('yes'),
+                        ],
+                    ],
+                ],
             ];
             $courseformatoptions = array_merge_recursive($courseformatoptions, $courseformatoptionsedit);
         }
@@ -707,6 +723,8 @@ class format_onetopic extends core_courseformat\base {
                         $data['usessectionsnavigation'] = 0;
                     } else if ($key === 'usescourseindex') {
                         $data['usescourseindex'] = 2;
+                    } else if ($key === 'splittitle') {
+                        $data['splittitle'] = 1;
                     }
                 }
             }

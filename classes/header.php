@@ -154,7 +154,7 @@ class header implements \renderable, \templatable {
         ];
 
         // Include course format js module.
-        $PAGE->requires->js('/course/format/topics/format.js');
+        // $PAGE->requires->js('/course/format/topics/format.js');
         $PAGE->requires->js('/course/format/onetopic/format.js');
         $PAGE->requires->yui_module('moodle-core-notification-dialogue', 'M.course.format.dialogueinit');
         $PAGE->requires->js_call_amd('format_onetopic/main', 'init', $params);
@@ -209,9 +209,12 @@ class header implements \renderable, \templatable {
 
                 $formatoptions = course_get_format($course)->get_format_options($thissection);
 
-                $sectionname = get_section_name($course, $thissection);
-                $title = $sectionname;
-
+                $title = get_section_name($course, $thissection);
+                // Split Tabs Text - hribeiro.
+                if ($course->splittitle) {
+                    $title = explode(':', $title);
+                    $title = $title[0];
+                }
                 if (!$thissection->visible || !$thissection->available) {
                     $title .= ': '. get_string('hiddenfromstudents');
                 }
@@ -270,8 +273,7 @@ class header implements \renderable, \templatable {
                         $availablemessage = $output->render($availability);
                     }
                 }
-
-                $newtab = new \format_onetopic\singletab($section, $sectionname, $url, $title,
+                $newtab = new \format_onetopic\singletab($section, $title, $url, $title,
                                         $availablemessage, $customstyles, $specialclass);
                 $newtab->active = !$inactivetab;
 
