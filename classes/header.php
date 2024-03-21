@@ -154,7 +154,7 @@ class header implements \renderable, \templatable {
         ];
 
         // Include course format js module.
-        // $PAGE->requires->js('/course/format/topics/format.js');
+        $PAGE->requires->js('/course/format/topics/format.js');
         $PAGE->requires->js('/course/format/onetopic/format.js');
         $PAGE->requires->yui_module('moodle-core-notification-dialogue', 'M.course.format.dialogueinit');
         $PAGE->requires->js_call_amd('format_onetopic/main', 'init', $params);
